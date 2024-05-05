@@ -2,8 +2,8 @@
 # This script displays the content of the current directory in a list format
 # Where only the part of the name after the first dash is displayed
 
-list=$(ls | sort | cut -d '-' -f 2)
+list=$(find ./* | sort | cut -d '-' -f 2)
 
 for item in $list; do
-    echo $item
+    echo "$item"
 done
