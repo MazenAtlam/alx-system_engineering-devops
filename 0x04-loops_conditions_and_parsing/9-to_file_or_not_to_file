@@ -5,7 +5,7 @@ list=$(find ./*)
 FILE=./school
 
 for file in $list; do
-    if [ $file == "$FILE" ]; then
+    if [ "$file" == "$FILE" ]; then
         echo "school file exists"
 
         if [ -s "$FILE" ]; then
