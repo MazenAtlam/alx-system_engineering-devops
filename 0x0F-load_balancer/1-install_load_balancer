@@ -19,8 +19,8 @@ frontend web
 backend web-backend
 
     balance roundrobin
-    server web-01 107.23.108.21:80 check
-    server web-02 107.23.108.21:80 check
+    server 218560-web-01 107.23.108.21:80 check
+    server 218560-web-02 107.23.108.21:80 check
 
 EOT
 
