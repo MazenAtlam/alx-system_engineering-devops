@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# A bash script that redirect /redirect_me to another page
+
+file="/etc/nginx/nginx.conf"
+
+sudo service nginx start
+
+sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx_original_conf
+sudo chown -R $USER:$USER $file
+sudo chmod -R 664 $file
+
+sudo echo -e "events {}\n" > $file
+sudo echo -e "http {\n" >> $file
+sudo echo -e "\tserver {\n" >> $file
+sudo echo -e "\t\tlisten 80;" >> $file
+sudo echo -e "\t\troot /var/www/html;\n" >> $file
+sudo echo -e "\t\tlocation /redirect_me {\n" >> $file
+sudo echo -ne "\t\t\treturn 301 " >> $file
+sudo echo -e "https://www.youtube.com/watch?v=QH2-TGUlwu4;" >> $file
+sudo echo -e "\t\t}" >> $file
+sudo echo -e "\t}\n" >> $file
+sudo echo -e "\tinclude /etc/nginx/mime.types;" >> $file
+sudo echo -e "}" >> $file
+
+sudo nginx -s reload
+sudo service nginx restart
