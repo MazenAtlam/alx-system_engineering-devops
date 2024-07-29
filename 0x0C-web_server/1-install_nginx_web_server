@@ -2,12 +2,21 @@
 # A bash script that installs nginx on your web-01
 
 sudo apt-get -y update
-sudo apt-get -y install nginx
 
+# Install and start nginx
+sudo apt-get -y install nginx
+sudo service nginx start
+
+# Adjust the firewall to open only on port 80
 sudo ufw allow 'Nginx HTTP'
 
+# Set up new document root directories
 sudo mkdir -p /var/www/html
-sudo chown -R ubuntu:ubuntu /var/www/html
+sudo chown -R $USER:$USER /var/www/html
 sudo chmod -R 755 /var/www
 
+# Create a new static web page
 sudo echo "Hello World!" > /var/www/html/index.html
+
+# Restart nginx
+sudo service nginx restart
