@@ -3,12 +3,29 @@
 
 file="/etc/nginx/nginx.conf"
 
+sudo apt-get -y update
+
+# Install and start nginx
+sudo apt-get -y install nginx
 sudo service nginx start
 
+# Adjust the firewall to open only on port 80
+sudo ufw allow 'Nginx HTTP'
+
+# Set up new document root directories
+sudo mkdir -p /var/www/html
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Create a new static web page
+sudo echo "Hello World!" > /var/www/html/index.html
+
+# Make a backup of nginx.conf file
 sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx_original_conf
 sudo chown -R "$USER":"$USER" $file
 sudo chmod -R 664 $file
 
+# Set up /redirect_me to a youtubr video
 echo -e "events {}\n" > $file
 {
 	echo -e "http {\n"
@@ -24,5 +41,6 @@ echo -e "events {}\n" > $file
 	echo -e "}"
 } >> $file
 
+# Restart nginx
 sudo nginx -s reload
 sudo service nginx restart
