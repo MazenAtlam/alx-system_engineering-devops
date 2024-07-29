@@ -9,8 +9,8 @@ line2="\tlocation = /custom_404.html {"
 line3="\t\troot /var/www/html;"
 line4="\t\tinternal;"
 line5="\t}"
-replace1='24i\'
-replace2='25i\'
+replace1="24i\\"
+replace2="25i\\"
 
 # Updating and install nginx
 sudo apt-get -y update
@@ -31,10 +31,10 @@ sudo chmod -R 755 /var/www
 sudo cp /var/www/html/index.html /var/www/html/index.html.bckp
 
 # Create a new static web page
-sudo echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 
 # Create a custom 404 not found page
-sudo echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
 
 # Set up /redirect_me to a youtubr video
 sudo sed -i "$replace1\trewrite ^/redirect_me $url permanent;" $default_file
