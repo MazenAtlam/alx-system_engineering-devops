@@ -18,7 +18,7 @@ sudo chown -R "$USER":"$USER" /var/www/html
 sudo chmod -R 755 /var/www
 
 # Create a new static web page
-sudo echo "Hello World!" > /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 
 # Make a backup of nginx.conf file
 sudo cp /etc/nginx/nginx.conf /etc/nginx/nginx_original_conf
